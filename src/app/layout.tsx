@@ -2,11 +2,11 @@ import type { Metadata } from "next";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "Autopark Colonial - Servicio de Aparcamiento del Hotel Colonial",
+  title:
+    "Colonial Autopark - Serviço de Estacionamento do Hotel Colonial Iguaçu",
   description:
-    "Descubre Autopark Colonial, el exclusivo servicio de aparcamiento del Hotel Colonial diseñado para ofrecer comodidad, seguridad y eficiencia a nuestros huéspedes. Estaciona con confianza y disfruta de tu estadía.",
+    "Descubra o Autopark Colonial, o exclusivo serviço de estacionamento do Hotel Colonial, projetado para oferecer conforto, segurança e eficiência aos nossos hóspedes. Estacione com confiança e aproveite sua estadia.",
 };
-
 export default function RootLayout({
   children,
 }: Readonly<{

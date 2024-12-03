@@ -38,11 +38,11 @@ const HomePage = () => {
           <div className="absolute inset-0 flex justify-end items-center z-0">
             <div className="w-[1000px]">
               <Image
-                src="/parking.png"
+                src="/airport.jpg"
                 width={1400} // Tamaño máximo para imágenes grandes
                 height={900}
                 alt="parking"
-                className="object-contain rounded-3xl py-3"
+                className="object-contain rounded-3xl py-3 opacity-70"
               />
             </div>
           </div>
