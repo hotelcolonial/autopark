@@ -140,6 +140,9 @@ const HomePage = () => {
           </div>
         </div>
       </section>
+      <div className="mx-auto flex justify-center">
+        <Image alt="banner" width={800} height={800} src="/banner.png" />
+      </div>
       <section id="services" className="py-24 font-inter padding-container">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="mb-10 lg:mb-16 flex justify-center items-center flex-col gap-x-0 gap-y-6 lg:gap-y-0 lg:flex-row lg:justify-between max-md:max-w-lg max-md:mx-auto">
@@ -402,7 +405,7 @@ const HomePage = () => {
 
             {/* Contenido del hotel */}
             <div
-              className="relative text p-6 w-[40%] xl:w-[28%] bg-green-950 text-white z-10 flex-1"
+              className="relative text p-6 w-[47%] xl:w-[35%] bg-green-950 text-white z-10 flex-1"
               style={{
                 clipPath:
                   "polygon(75% 0%, 100% 50%, 75% 100%, 0% 100%, 0 50%, 0% 0%)",
