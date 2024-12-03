@@ -21,7 +21,7 @@ const HomePage = () => {
               Vai viajar e embarcar saindo do aeroporto internacional de Foz do
               Iguaçu?
             </p>
-            <h1 className="text-[4rem] md:text-[7rem] 2xl:text-[9rem] leading-[4rem] md:leading-[6rem] 2xl:leading-[7.2rem] text-green-950">
+            <h1 className="text-[3.5rem] md:text-[7rem] 2xl:text-[9rem] leading-[4rem] md:leading-[6rem] 2xl:leading-[7.2rem] text-green-950">
               ESTACIONE <br /> HOSPEDE-SE <br />
               VOE
             </h1>
@@ -450,12 +450,16 @@ const HomePage = () => {
 
           {/* Coluna direita */}
           <div className="flex flex-col items-center">
-            <h3 className="text-lg font-bold mb-4 text-gray-800 text-sm">
-              Siga-nos
-            </h3>
+            <h3 className="font-bold mb-4 text-gray-800 text-sm">Siga-nos</h3>
             <div className="flex gap-4 mb-6">
-              <div className="bg-primary-green py-3 px-2 rounded-full">
-                <Image alt="logo" src="/logo.png" width={60} height={60} />
+              <div className="">
+                <Image
+                  alt="logo"
+                  src="/logo.png"
+                  width={75}
+                  height={70}
+                  className="bg-primary-green py-2 px-1 rounded-lg"
+                />
               </div>
               <div className="py-3 px-2 rounded-full">
                 <Link href="https://hotelcolonialfoz.com.br/">

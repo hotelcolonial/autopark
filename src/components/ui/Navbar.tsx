@@ -5,7 +5,7 @@ const Navbar = () => {
     <header className="">
       <nav className="navbar bg-base-100 relative z-10 ">
         <div className="navbar-start">
-          <div className="bg-primary-green py-3 px-2 rounded-full">
+          <div className="bg-primary-green py-2 px-1 rounded-lg">
             <Image alt="logo" src="/logo.png" width={60} height={60} />
           </div>
         </div>
