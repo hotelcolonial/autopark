@@ -12,7 +12,7 @@ import { FaWhatsapp } from "react-icons/fa";
 const HomePage = () => {
   return (
     <div className=" text-black overflow-hidden space-y-7">
-      <div className="h-screen padding-container flex flex-col mb-12 overflow-hidden">
+      <div className="h-screen padding-container flex flex-col mb-6 overflow-hidden">
         <Navbar />
         <div className="relative flex items-center flex-grow font-black font-inter">
           {/* Contenedor de texto */}
