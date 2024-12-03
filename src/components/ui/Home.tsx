@@ -122,17 +122,17 @@ const HomePage = () => {
             {/* Imagens */}
             <div className="grid grid-cols-2 gap-4">
               <img
-                src="/3.jpg"
+                src="/park3.png"
                 alt="Cena de estacionamento 1"
                 className="rounded-lg shadow-md object-cover"
               />
               <img
-                src="/2.jpg"
+                src="/park2.png"
                 alt="Cena de estacionamento 2"
                 className="rounded-lg shadow-md"
               />
               <img
-                src="/4.jpg"
+                src="/park3.png"
                 alt="Cena de estacionamento 3"
                 className="rounded-lg shadow-md col-span-2 mx-auto"
               />
