@@ -495,7 +495,7 @@ const HomePage = () => {
         href="https://wa.me/5508008191993"
         target="_blank"
         rel="noopener noreferrer"
-        className="fixed bottom-4 right-4 bg-green-500 hover:bg-green-600 text-white rounded-full shadow-lg p-2 flex items-center justify-center transition-all duration-300"
+        className="fixed z-10 bottom-4 right-4 bg-green-500 hover:bg-green-600 text-white rounded-full shadow-lg p-2 flex items-center justify-center transition-all duration-300"
         aria-label="Chat on WhatsApp"
       >
         <FaWhatsapp size={36} />
