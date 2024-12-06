@@ -448,7 +448,7 @@ const HomePage = () => {
                   getAdjustedPrice(pack)
                 )}%20para%20${numPeople}%20pessoa${numPeople > 1 ? "s" : ""}`}
                 target="_blank"
-                className="ml-4 bg-primary-green font-medium text-gray-100 btn w-full md:w-auto"
+                className="md:ml-4 bg-primary-green font-medium text-gray-100 btn w-full md:w-auto"
               >
                 Reserve aqui
               </Link>
