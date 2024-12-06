@@ -28,7 +28,7 @@ const packages: Package[] = [
     description:
       "Você pode utilizar a diária antes do embarque ou no retorno da sua viagem",
     items: [
-      "Serviço de café no quarto para check-ou entre 03:00 a 05.:0 da manha",
+      "Serviço de café no quarto para check-ou entre 03:00 a 05:00 da manha",
       "1 diária em apartamento Single ou Double em categoria Standard",
       "Até 2 crianças com até 5 anos no mesmo quarto dos pais não pagam.",
       "Traslado gratuito Hotel – Aeroporto – Hotel.",
