@@ -11,7 +11,7 @@ import {
 
 import Link from "next/link";
 import { FaWhatsapp } from "react-icons/fa";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 
 type Package = {
   title: string;
@@ -91,17 +91,6 @@ const HomePage = () => {
     return pack.price;
   };
 
-  const adjustItems = (items: string[]): string[] => {
-    return items.map((item, index) => {
-      if (index === 1) {
-        return numPeople === 3
-          ? "1 diária em apartamento Triplo em categoria Standard."
-          : "1 diária em apartamento Single ou Double em categoria Standard.";
-      }
-
-      return item;
-    });
-  };
   return (
     <div className=" text-black overflow-hidden space-y-7">
       <div className="h-screen padding-container flex flex-col mb-6 overflow-hidden">
@@ -149,86 +138,96 @@ const HomePage = () => {
           </div>
         </div>
       </div>
-      <section
-        id="packs"
-        className="flex flex-col items-center py-10 mb-3 font-inter bg-green-950 bg-opacity-10"
-      >
-        <div className="text-center">
-          <h2 className="text-3xl font-bold mb-2">Pacotes de Hospedagem</h2>
-          <p className="text-gray-600 mb-4">
-            Escolha o pacote que melhor se adapta à sua viagem e aproveite
-            nossos benefícios exclusivos.
-          </p>
-          <div className="flex items-center justify-center gap-4 mb-8">
-            <button
-              className={`py-2 px-4 text-xs rounded-md ${
-                numPeople === 2 ? "bg-primary-green text-white" : "bg-gray-200"
-              }`}
-              onClick={() => setNumPeople(2)}
-            >
-              2 Pessoas
-            </button>
-            <button
-              className={`py-2 px-4 text-xs rounded-md ${
-                numPeople === 3 ? "bg-primary-green text-white" : "bg-gray-200"
-              }`}
-              onClick={() => setNumPeople(3)}
-            >
-              3 Pessoas
-            </button>
+      <section className="bg-green-950 bg-opacity-10 py-12 font-inter">
+        <div className="container mx-auto px-6 md:px-12 lg:px-20">
+          <div className="grid md:grid-cols-2 gap-8 items-center">
+            {/* Texto */}
+            <div id="whoweare">
+              <h3 className="text-gray-500 text-sm uppercase mb-2">
+                Quem somos
+              </h3>
+              <h2 className="text-4xl font-bold text-gray-900 mb-4">
+                Colonial Auto Park
+              </h2>
+              <p className="text-gray-700 mb-6">
+                Somos um serviço exclusivo oferecido pelo Hotel Colonial Iguaçu
+                com o objetivo de proporcionar o melhor custo-benefício em
+                serviços de estacionamento e hospedagem para o seu planejamento
+                de viagem, seja a lazer ou a trabalho.
+              </p>
+              <ul className="mb-6 space-y-4">
+                <li className="flex items-center">
+                  <svg
+                    className="w-6 h-6 text-indigo-500 mr-2"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="2"
+                    viewBox="0 0 24 24"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      d="M5 13l4 4L19 7"
+                    ></path>
+                  </svg>
+                  Excelente custo-benefício no mercado.
+                </li>
+                <li className="flex items-center">
+                  <svg
+                    className="w-6 h-6 text-indigo-500 mr-2"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="2"
+                    viewBox="0 0 24 24"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      d="M5 13l4 4L19 7"
+                    ></path>
+                  </svg>
+                  Localizado próximo ao aeroporto.
+                </li>
+                <li className="flex items-center">
+                  <svg
+                    className="w-6 h-6 text-indigo-500 mr-2"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="2"
+                    viewBox="0 0 24 24"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      d="M5 13l4 4L19 7"
+                    ></path>
+                  </svg>
+                  Conforto e segurança para sua viagem.
+                </li>
+              </ul>
+            </div>
+            {/* Imagens */}
+            <div className="grid grid-cols-2 gap-4">
+              <img
+                src="/park4.png"
+                alt="Cena de estacionamento 1"
+                className="rounded-lg shadow-md object-cover"
+              />
+              <img
+                src="/park2.png"
+                alt="Cena de estacionamento 2"
+                className="rounded-lg shadow-md"
+              />
+              <img
+                src="/park3.png"
+                alt="Cena de estacionamento 3"
+                className="rounded-lg shadow-md col-span-2 mx-auto"
+              />
+            </div>
           </div>
-        </div>
-
-        <div className="flex flex-wrap justify-center gap-6">
-          {packages.map((pack, index) => {
-            // Ajustar el segundo ítem de acuerdo al número de personas
-            const adjustedItems = pack.items.map((item, itemIndex) =>
-              itemIndex === 1
-                ? numPeople === 3
-                  ? "1 diária em apartamento Triplo em categoria Standard"
-                  : "1 diária em apartamento Single ou Double em categoria Standard"
-                : item
-            );
-
-            return (
-              <div
-                key={index}
-                className={`bg-white rounded-lg shadow-md border-t-4 ${pack.borderColor} w-[25rem] p-6`}
-              >
-                <h2 className="text-lg font-semibold mb-2">{pack.title}</h2>
-                <p className="text-[2.5rem] xl:text-[3rem] font-black text-gray-700 my-4">
-                  {getAdjustedPrice(pack)}{" "}
-                  <span className="text-sm text-bold">
-                    / {numPeople} pessoa{numPeople > 1 ? "s" : ""}
-                  </span>
-                </p>
-                <p className="text-sm text-gray-600 pb-4">{pack.subtitle}</p>
-                <p className="text-gray-800 italic mb-4 text-xs text-center">
-                  {pack.description}
-                </p>
-
-                <ul className="text-gray-500 mb-4 list-disc space-y-1 pl-5 text-sm">
-                  {adjustedItems.map((item, itemIndex) => (
-                    <li key={itemIndex}>{item}</li>
-                  ))}
-                </ul>
-
-                <Link
-                  href={`https://wa.me/5508008191993?text=Tenho%20interesse%20no%20pacote:%20${encodeURIComponent(
-                    pack.title
-                  )}%20-%20${encodeURIComponent(
-                    pack.subtitle
-                  )}%20pelo%20valor%20de%20${encodeURIComponent(
-                    getAdjustedPrice(pack)
-                  )}%20para%20${numPeople}%20pessoa${numPeople > 1 ? "s" : ""}`}
-                  target="_blank"
-                  className="ml-4 bg-primary-green font-medium text-gray-100 btn w-full md:w-auto"
-                >
-                  Reserve aqui
-                </Link>
-              </div>
-            );
-          })}
         </div>
       </section>
       <div className="mx-auto flex justify-center">
@@ -382,15 +381,12 @@ const HomePage = () => {
         id="packs"
         className="flex flex-col items-center py-10 mb-3 font-inter bg-green-950 bg-opacity-10"
       >
-        {/* Título y descripción */}
-        <section className="text-center">
+        <div className="text-center">
           <h2 className="text-3xl font-bold mb-2">Pacotes de Hospedagem</h2>
           <p className="text-gray-600 mb-4">
             Escolha o pacote que melhor se adapta à sua viagem e aproveite
             nossos benefícios exclusivos.
           </p>
-
-          {/* Switch para cambiar el número de personas */}
           <div className="flex items-center justify-center gap-4 mb-8">
             <button
               className={`py-2 px-4 text-xs rounded-md ${
@@ -409,53 +405,58 @@ const HomePage = () => {
               3 Pessoas
             </button>
           </div>
-        </section>
+        </div>
 
-        {/* Paquetes */}
         <div className="flex flex-wrap justify-center gap-6">
-          {packages.map((pack, index) => (
-            <div
-              key={index}
-              className={`bg-white rounded-lg shadow-md border-t-4 ${pack.borderColor} w-[23rem] md:w-[25rem] p-6 mx-3`}
-            >
-              {/* Título y precio */}
-              <h2 className="text-lg font-semibold mb-2">{pack.title}</h2>
-              <p className="text-[2.5rem] xl:text-[3rem] font-black text-gray-700 my-4">
-                {getAdjustedPrice(pack)}{" "}
-                <span className="text-sm text-bold">
-                  / {numPeople} pessoa{numPeople > 1 ? "s" : ""}
-                </span>
-              </p>
+          {packages.map((pack, index) => {
+            // Ajustar el segundo ítem de acuerdo al número de personas
+            const adjustedItems = pack.items.map((item, itemIndex) =>
+              itemIndex === 1
+                ? numPeople === 3
+                  ? "1 diária em apartamento Triplo em categoria Standard"
+                  : "1 diária em apartamento Single ou Double em categoria Standard"
+                : item
+            );
 
-              {/* Subtítulo y descripción */}
-              <p className="text-sm text-gray-600 pb-4">{pack.subtitle}</p>
-              <p className="text-gray-800 italic mb-4 text-xs text-center">
-                {pack.description}
-              </p>
-
-              {/* Lista de beneficios */}
-              <ul className="text-gray-500 mb-4 list-disc space-y-1 pl-5 text-sm">
-                {pack.items.map((item, itemIndex) => (
-                  <li key={itemIndex}>{item}</li>
-                ))}
-              </ul>
-
-              {/* Botón para WhatsApp */}
-              <Link
-                href={`https://wa.me/5508008191993?text=Tenho%20interesse%20no%20pacote:%20${encodeURIComponent(
-                  pack.title
-                )}%20-%20${encodeURIComponent(
-                  pack.subtitle
-                )}%20pelo%20valor%20de%20${encodeURIComponent(
-                  getAdjustedPrice(pack)
-                )}%20para%20${numPeople}%20pessoa${numPeople > 1 ? "s" : ""}`}
-                target="_blank"
-                className="md:ml-4 bg-primary-green font-medium text-gray-100 btn w-full md:w-auto"
+            return (
+              <div
+                key={index}
+                className={`bg-white rounded-lg shadow-md border-t-4 ${pack.borderColor} w-[25rem] p-6`}
               >
-                Reserve aqui
-              </Link>
-            </div>
-          ))}
+                <h2 className="text-lg font-semibold mb-2">{pack.title}</h2>
+                <p className="text-[2.5rem] xl:text-[3rem] font-black text-gray-700 my-4">
+                  {getAdjustedPrice(pack)}{" "}
+                  <span className="text-sm text-bold">
+                    / {numPeople} pessoa{numPeople > 1 ? "s" : ""}
+                  </span>
+                </p>
+                <p className="text-sm text-gray-600 pb-4">{pack.subtitle}</p>
+                <p className="text-gray-800 italic mb-4 text-xs text-center">
+                  {pack.description}
+                </p>
+
+                <ul className="text-gray-500 mb-4 list-disc space-y-1 pl-5 text-sm">
+                  {adjustedItems.map((item, itemIndex) => (
+                    <li key={itemIndex}>{item}</li>
+                  ))}
+                </ul>
+
+                <Link
+                  href={`https://wa.me/5508008191993?text=Tenho%20interesse%20no%20pacote:%20${encodeURIComponent(
+                    pack.title
+                  )}%20-%20${encodeURIComponent(
+                    pack.subtitle
+                  )}%20pelo%20valor%20de%20${encodeURIComponent(
+                    getAdjustedPrice(pack)
+                  )}%20para%20${numPeople}%20pessoa${numPeople > 1 ? "s" : ""}`}
+                  target="_blank"
+                  className="ml-4 bg-primary-green font-medium text-gray-100 btn w-full md:w-auto"
+                >
+                  Reserve aqui
+                </Link>
+              </div>
+            );
+          })}
         </div>
       </section>
       <section id="location" className="padding-container">
