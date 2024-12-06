@@ -13,7 +13,16 @@ import Link from "next/link";
 import { FaWhatsapp } from "react-icons/fa";
 import { useState } from "react";
 
-const packages = [
+type Package = {
+  title: string;
+  description: string;
+  items: string[];
+  subtitle: string;
+  borderColor: string;
+  price: string;
+};
+
+const packages: Package[] = [
   {
     title: "Pacote até 4 dias",
     description:
@@ -63,7 +72,7 @@ const packages = [
 
 const HomePage = () => {
   const [numPeople, setNumPeople] = useState(2);
-  const getAdjustedPrice = (pack) => {
+  const getAdjustedPrice = (pack: Package) => {
     if (numPeople === 2) return pack.price;
 
     if (numPeople === 3) {
