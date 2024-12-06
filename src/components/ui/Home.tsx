@@ -414,7 +414,7 @@ const HomePage = () => {
           {packages.map((pack, index) => (
             <div
               key={index}
-              className={`bg-white rounded-lg shadow-md border-t-4 ${pack.borderColor} w-[25rem] p-6`}
+              className={`bg-white rounded-lg shadow-md border-t-4 ${pack.borderColor} w-[23rem] md:w-[25rem] p-6 mx-3`}
             >
               {/* Título y precio */}
               <h2 className="text-lg font-semibold mb-2">{pack.title}</h2>
