@@ -383,7 +383,7 @@ const HomePage = () => {
       >
         <div className="text-center">
           <h2 className="text-3xl font-bold mb-2">Pacotes de Hospedagem</h2>
-          <p className="text-gray-600 mb-4">
+          <p className="text-gray-600 mb-4 px-3 md:px-0">
             Escolha o pacote que melhor se adapta à sua viagem e aproveite
             nossos benefícios exclusivos.
           </p>
@@ -421,7 +421,7 @@ const HomePage = () => {
             return (
               <div
                 key={index}
-                className={`bg-white rounded-lg shadow-md border-t-4 ${pack.borderColor} w-[25rem] p-6`}
+                className={`bg-white rounded-lg shadow-md border-t-4 ${pack.borderColor} w-[23rem] md:w-[25rem] p-6`}
               >
                 <h2 className="text-lg font-semibold mb-2">{pack.title}</h2>
                 <p className="text-[2.5rem] xl:text-[3rem] font-black text-gray-700 my-4">
@@ -450,7 +450,7 @@ const HomePage = () => {
                     getAdjustedPrice(pack)
                   )}%20para%20${numPeople}%20pessoa${numPeople > 1 ? "s" : ""}`}
                   target="_blank"
-                  className="ml-4 bg-primary-green font-medium text-gray-100 btn w-full md:w-auto"
+                  className="md:ml-4 bg-primary-green font-medium text-gray-100 btn w-full md:w-auto"
                 >
                   Reserve aqui
                 </Link>
