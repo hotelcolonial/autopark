@@ -14,7 +14,7 @@ const Footer = () => {
           <p className="text-gray-800">Foz do Iguaçu - PR</p>
           <p className="text-gray-800">reservas@hotelcolonialfoz.com.br</p>
           <p className="text-green-500 font-bold mt-4">
-            Ligue Grátis: 0800 819 1993
+            Ligue Grátis: +5545935297711
           </p>
         </div>
 
