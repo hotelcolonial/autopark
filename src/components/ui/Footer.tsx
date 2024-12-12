@@ -46,7 +46,7 @@ const Footer = () => {
                 className="bg-primary-green py-2 px-1 rounded-lg"
               />
             </div>
-            <div className="py-3 px-2 rounded-full">
+            <div className="py-3 px-2 rounded-full hotel-link">
               <Link href="https://hotelcolonialfoz.com.br/">
                 <Image
                   alt="logo"

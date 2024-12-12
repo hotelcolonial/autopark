@@ -92,10 +92,6 @@ const HomePage = () => {
     <div className=" text-black overflow-hidden space-y-7">
       <Header />
       <WhoWeAre />
-      <div className="mx-auto flex justify-center">
-        <Image alt="banner" width={800} height={800} src="/banner.png" />
-      </div>
-      <Services />
       <section
         id="packs"
         className="flex flex-col items-center py-10 mb-3 font-inter bg-green-950 bg-opacity-10"
@@ -178,6 +174,11 @@ const HomePage = () => {
           })}
         </div>
       </section>
+      <div className="mx-auto flex justify-center">
+        <Image alt="banner" width={800} height={800} src="/banner.png" />
+      </div>
+      <Services />
+
       <Localization />
       <Footer />
       {/* Ícono de WhatsApp */}
