@@ -54,40 +54,40 @@ export const CookieConsent: React.FC = () => {
   if (!showBanner) return null;
 
   return (
-    <div className="fixed font-inter inset-0 flex items-center justify-center bg-black bg-opacity-50 z-50">
-      <div className="bg-white rounded-lg shadow-xl w-full max-w-md overflow-hidden transition-all duration-300 ease-in-out transform hover:scale-105">
-        <div className="p-6">
-          <div className="flex items-center justify-center mb-4">
-            <CookieIcon className="mr-2 h-6 w-6" />
-            <h2 className="text-2xl font-black text-gray-800">
-              Política de Cookies
-            </h2>
-          </div>
-          <p className="text-center font-medium text-sm text-gray-600 mb-3">
+    <div className="fixed bottom-0 left-0 right-0 p-4 bg-white z-50 shadow-lg animate-slide-up">
+      <div className="w-full max-w-2xl mx-auto">
+        <div className="text-center mb-4">
+          <h2 className="text-xl font-bold flex items-center justify-center">
+            <CookieIcon className="mr-2 h-5 w-5" />
+            Política de Cookies
+          </h2>
+        </div>
+        <div className="mb-4">
+          <p className="text-center text-sm text-gray-600 mb-2">
             Ajude-nos a melhorar sua experiência
           </p>
-          <p className="text-center text-sm text-gray-600 mb-3">
+          <p className="text-center text-sm text-gray-600 mb-2">
             Usamos cookies para personalizar conteúdo, analisar o tráfego e
             melhorar nossos serviços. Sua privacidade é importante para nós.
           </p>
-          <p className="text-center text-xs text-gray-500 mb-6">
+          <p className="text-center text-xs text-gray-500">
             Ao aceitar, você nos ajuda a oferecer uma experiência mais
             personalizada e eficiente.
           </p>
-          <div className="flex justify-between text-xs">
-            <button
-              onClick={handleReject}
-              className="px-4 py-2 bg-gray-200 text-gray-800 rounded hover:bg-gray-300 transition-colors duration-300"
-            >
-              Rejeitar
-            </button>
-            <button
-              onClick={handleAcceptAll}
-              className="px-4 py-2 bg-black text-white rounded hover:bg-primary-green transition-colors duration-300"
-            >
-              Aceitar Todos
-            </button>
-          </div>
+        </div>
+        <div className="flex justify-between text-xs">
+          <button
+            onClick={handleReject}
+            className="px-4 py-2 bg-gray-200 text-gray-800 rounded hover:bg-gray-300 transition-colors duration-300"
+          >
+            Rejeitar
+          </button>
+          <button
+            onClick={handleAcceptAll}
+            className="px-4 py-2 bg-black text-white rounded hover:bg-gray-800 transition-colors duration-300"
+          >
+            Aceitar Todos
+          </button>
         </div>
       </div>
     </div>
