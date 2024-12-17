@@ -59,23 +59,23 @@ export const CookieConsent: React.FC = () => {
         <div className="flex items-center space-x-4">
           <CookieIcon className="h-6 w-6 text-gray-600" />
           <div>
-            <h2 className="text-lg font-semibold">Política de Cookies</h2>
+            <h2 className="text-bases font-semibold">Política de Cookies</h2>
             <p className="text-sm text-gray-600 max-w-2xl">
               Usamos cookies para personalizar conteúdo, analisar o tráfego e
               melhorar nossos serviços. Sua privacidade é importante para nós.
             </p>
           </div>
         </div>
-        <div className="flex items-center space-x-4">
+        <div className="flex items-center space-x-4 text-xs">
           <button
             onClick={handleReject}
-            className="px-4 py-2 bg-gray-200 text-gray-800 rounded hover:bg-gray-300 transition-colors duration-300 text-sm"
+            className="px-4 py-2 bg-gray-200 text-gray-800 rounded hover:bg-gray-300 transition-colors duration-300"
           >
             Rejeitar
           </button>
           <button
             onClick={handleAcceptAll}
-            className="px-4 py-2 bg-black text-white rounded hover:bg-gray-800 transition-colors duration-300 text-sm"
+            className="px-4 py-2 bg-black text-white rounded hover:bg-gray-800 transition-colors duration-300"
           >
             Aceitar Todos
           </button>
