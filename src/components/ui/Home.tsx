@@ -87,11 +87,9 @@ const HomePage = () => {
 
     return pack.price;
   };
-
   return (
     <div className=" text-black overflow-hidden space-y-7">
       <Header />
-      <WhoWeAre />
       <section
         id="packs"
         className="flex flex-col items-center py-10 mb-3 font-inter bg-green-950 bg-opacity-10"
@@ -157,7 +155,7 @@ const HomePage = () => {
                 </ul>
 
                 <Link
-                  href={`https://wa.me/554535297711?text=Tenho%20interesse%20no%20pacote:%20${encodeURIComponent(
+                  href={`https://wa.me/558008191993?text=Tenho%20interesse%20no%20pacote:%20${encodeURIComponent(
                     pack.title
                   )}%20-%20${encodeURIComponent(
                     pack.subtitle
@@ -174,16 +172,18 @@ const HomePage = () => {
           })}
         </div>
       </section>
-      <div className="mx-auto flex justify-center">
+      <WhoWeAre />
+
+      {/*    <div className="mx-auto flex justify-center">
         <Image alt="banner" width={800} height={800} src="/banner.png" />
-      </div>
+      </div> */}
       <Services />
 
       <Localization />
       <Footer />
       {/* Ícono de WhatsApp */}
       <a
-        href="https://wa.me/554535297711"
+        href="https://wa.me/558008191993"
         target="_blank"
         rel="noopener noreferrer"
         className="fixed z-10 bottom-4 right-4 bg-green-500 hover:bg-green-600 text-white rounded-full shadow-lg p-2 flex items-center justify-center transition-all duration-300 reserve-whatsapp"

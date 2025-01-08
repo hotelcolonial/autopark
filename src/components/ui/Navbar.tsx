@@ -1,4 +1,7 @@
 import Image from "next/image";
+import { Button } from "./button";
+import { cn } from "@/lib/utils";
+import Link from "next/link";
 
 const Navbar = () => {
   return (
@@ -29,7 +32,21 @@ const Navbar = () => {
             </li>
           </ul>
         </div>
-        <div className="navbar-end" />
+        <div className="navbar-end">
+          {/*   <Link href="/booking/signup">
+            <Button
+              className={cn(
+                "bg-primary-green",
+                "text-white",
+                "rounded-full",
+                "hover:bg-green-700",
+                "font-[200]"
+              )}
+            >
+              Faça sua reserva
+            </Button>
+          </Link> */}
+        </div>
       </nav>
     </header>
   );
