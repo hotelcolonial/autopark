@@ -1,12 +1,14 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import Image from "next/image";
-import Link from "next/link";
 import { motion } from "framer-motion";
+import Link from "next/link";
+import Image from "next/image";
 import Navbar from "./Navbar";
+import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
+import { InfoIcon } from "lucide-react";
 
-const Header = () => {
+export default function Header() {
   const [isVisible, setIsVisible] = useState(false);
 
   useEffect(() => {
@@ -53,12 +55,30 @@ const Header = () => {
               </Link>
             </p>
             <Link
-              href="https://wa.me/554535297711"
+              href="https://wa.me/558008191993"
               target="_blank"
               className="inline-block bg-green-900 text-white font-light text-sm sm:text-md px-6 py-2 rounded-full hover:bg-green-800 transition-colors duration-300 transform hover:scale-105 shadow-lg"
             >
               Fale conosco pelo WhatsApp!
             </Link>
+          </motion.div>
+
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: isVisible ? 1 : 0, y: isVisible ? 0 : 20 }}
+            transition={{ duration: 0.8, delay: 0.4 }}
+            className="mt-8 mx-auto w-fit"
+          >
+            <Alert variant="default" className="bg-amber-50 border-amber-200">
+              <InfoIcon className="h-4 w-4 text-amber-600" />
+              <AlertTitle className="text-amber-800 font-semibold">
+                Atenção: Disponibilidade Limitada
+              </AlertTitle>
+              <AlertDescription className="text-amber-700">
+                Promoções e estacionamento garantidos apenas para reservas de no
+                mínimo uma noite de hospedagem. Veja nossos pacotes!
+              </AlertDescription>
+            </Alert>
           </motion.div>
         </div>
 
@@ -81,6 +101,4 @@ const Header = () => {
       </div>
     </div>
   );
-};
-
-export default Header;
+}
