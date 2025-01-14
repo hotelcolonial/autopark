@@ -50,9 +50,9 @@ export const RegisterForm = ({ user }: { user: User }) => {
       }
     } catch (error) {
       console.log(error);
+    } finally {
+      setTimeout(() => setIsLoading(false), 2000);
     }
-
-    setIsLoading(false);
   };
 
   return (

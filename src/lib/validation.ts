@@ -42,12 +42,23 @@ export const ClientFormValidation = z.object({
 });
 
 export const AppointmentFormValidation = z.object({
-  hasReservation: z.union([z.boolean(), z.string()]),
+  numberOfNights: z.number().int().min(1),
+  confirmed: z.boolean(),
   withAccommodation: z.union([z.boolean(), z.string()]),
-  checkInDate: z.date(),
-  checkOutDate: z.date(),
   numberOfPeople: z
     .number()
-    .min(1, "Deve ter pelo menos 1 pessoa")
+    .int()
+    .min(1)
     .max(3, "Não pode ser mais do que 3 pessoas"),
+  hasReservation: z.union([z.boolean(), z.string()]),
+  checkInDate: z.string().or(z.date()),
+  checkOutDate: z.string().or(z.date()),
+  total: z.number(),
+  $id: z.string().optional(),
+  $createdAt: z.string().optional(),
+  $updatedAt: z.string().optional(),
+  $permissions: z.array(z.unknown()).optional(),
+  client: z.array(z.unknown()).optional(),
+  $databaseId: z.string().optional(),
+  $collectionId: z.string().optional(),
 });
