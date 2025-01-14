@@ -1,11 +1,13 @@
 import Image from "next/image";
 import Link from "next/link";
-
-import { AppointmentForm } from "@/components/forms/AppointmentForm";
+import AppointmentForm from "@/components/forms/AppointmentForm";
 import { getClient } from "@/lib/actions/client.actions";
 
 const NewAppointment = async ({ params: { userId } }: SearchParamProps) => {
   const client = await getClient(userId);
+
+  console.log(client);
+
   return (
     <div className="flex min-h-screen">
       <section className="remove-scrollbar container my-auto flex-1">

@@ -60,15 +60,11 @@ const RenderInput = ({ field, props }: { field: any; props: CustomProps }) => {
           )}
           <FormControl>
             <Input
-              type="text" // Cambia esto si solo quieres números: type="number"
+              type="text" // Mantén el tipo adecuado según la necesidad
               placeholder={props.placeholder}
-              value={field.value}
+              value={field.value || ""} // Asegúrate de manejar valores no definidos
               onChange={(e) => {
-                // Si necesitas convertir valores numéricos
-                const value = isNaN(Number(e.target.value))
-                  ? e.target.value
-                  : Number(e.target.value);
-                field.onChange(value);
+                field.onChange(e.target.value); // Pasa el valor sin manipulación adicional
               }}
               className="shad-input border-0"
             />

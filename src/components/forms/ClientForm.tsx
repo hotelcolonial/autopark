@@ -17,7 +17,7 @@ import { createUser } from "@/lib/actions/client.actions";
 export const ClientForm = () => {
   const router = useRouter();
   const [isLoading, setIsLoading] = useState(false);
-
+  const [errorMessage, setErrorMessage] = useState("");
   const form = useForm<z.infer<typeof UserFormValidation>>({
     resolver: zodResolver(UserFormValidation),
     defaultValues: {
@@ -29,6 +29,7 @@ export const ClientForm = () => {
 
   const onSubmit = async (values: z.infer<typeof UserFormValidation>) => {
     setIsLoading(true);
+    setErrorMessage(""); // Resetea el mensaje de error antes de intentar
 
     try {
       const userData = {
@@ -37,18 +38,25 @@ export const ClientForm = () => {
         phone: values.phone,
       };
 
-      const user = await createUser(userData);
+      const { user, error } = await createUser(userData);
+
+      if (error) {
+        setErrorMessage(error); // Muestra el mensaje de error si ocurre un conflicto
+        return;
+      }
 
       if (user) {
         router.push(`/booking/clients/${user.$id}/register`);
       }
     } catch (error) {
-      console.log(error);
+      console.error("Unhandled error:", error);
+      setErrorMessage(
+        "Ocorreu um erro inesperado. Tente novamente mais tarde."
+      );
+    } finally {
+      setTimeout(() => setIsLoading(false), 2000);
     }
-
-    setIsLoading(false);
   };
-
   return (
     <Form {...form}>
       <form onSubmit={form.handleSubmit(onSubmit)} className="flex-1 space-y-6">
@@ -56,7 +64,9 @@ export const ClientForm = () => {
           <h1 className="header">Olá! 👋</h1>
           <p className="text-dark-500">Comece a agendar sua reserva</p>
         </section>
-
+        {errorMessage && (
+          <div className="text-red-500 text-sm">{errorMessage}</div>
+        )}
         <CustomFormField
           fieldType={FormFieldType.INPUT}
           control={form.control}
