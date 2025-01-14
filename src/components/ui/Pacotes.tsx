@@ -12,7 +12,7 @@ import { CheckCircle } from "lucide-react";
 
 const PackageInfo = () => {
   const benefits = [
-    "Serviço de café no quarto para check-out entre 03:00 a 05:00 da manhã.",
+    /* "Serviço de café no quarto para check-out entre 03:00 a 05:00 da manhã.", */
     "Diárias em apartamentos Single, Double ou Triplo em categoria Standard.",
     "1 criança com até 6 anos no mesmo quarto dos pais não paga.",
     "Traslado gratuito Hotel – Aeroporto – Hotel.",
