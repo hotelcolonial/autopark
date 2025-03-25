@@ -12,7 +12,7 @@ const Localization = () => {
   return (
     <section
       id="location"
-      className="py-16 px-4 sm:px-6 lg:px-8 bg-gradient-to-b from-green-50 to-white"
+      className="py-16 px-4 sm:px-6 font-inter lg:px-8 bg-gradient-to-b from-green-50 to-white"
     >
       <div className="max-w-6xl mx-auto">
         <motion.h2
