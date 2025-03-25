@@ -91,7 +91,10 @@ const PackageInfo = () => {
                 <Button
                   className={`${pkg.buttonClass} text-white font-bold py-2 px-4 rounded-md shadow-md transition duration-300 w-full`}
                   onClick={() =>
-                    window.open("https://wa.me/558008191993", "_blank")
+                    window.open(
+                      "https://wa.me/558008191993?text=Olá%21%20Quero%20saber%20sobre%20o%20estacionamento",
+                      "_blank"
+                    )
                   }
                 >
                   RESERVE AGORA
@@ -109,7 +112,12 @@ const PackageInfo = () => {
           <Button
             size="lg"
             className="bg-primary-green hover:bg-primary-green/90 text-white font-bold py-3 px-6 rounded-lg shadow-md transition duration-300"
-            onClick={() => window.open("https://wa.me/558008191993", "_blank")}
+            onClick={() =>
+              window.open(
+                "https://wa.me/558008191993?text=Olá%21%20Quero%20saber%20sobre%20o%20estacionamento",
+                "_blank"
+              )
+            }
           >
             FALE CONOSCO
           </Button>

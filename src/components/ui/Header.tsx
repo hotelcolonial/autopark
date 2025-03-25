@@ -110,7 +110,7 @@ export default function Header() {
                 whileTap={{ scale: 0.95 }}
               >
                 <Link
-                  href="https://wa.me/558008191993"
+                  href="https://wa.me/558008191993?text=Olá%21%20Quero%20saber%20sobre%20o%20estacionamento"
                   target="_blank"
                   className="inline-block bg-green-900 text-white font-medium text-sm sm:text-md px-8 py-3 rounded-full hover:bg-green-800 transition-colors duration-300 shadow-lg"
                 >
