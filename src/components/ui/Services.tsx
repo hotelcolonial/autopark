@@ -1,152 +1,120 @@
-import {
-  AiOutlineClockCircle,
-  AiOutlineCreditCard,
-  AiOutlineCustomerService,
-  AiOutlineSafety,
-} from "react-icons/ai";
+"use client";
+
+import { motion } from "framer-motion";
+import { Car, BedDouble, Plane, Coffee, UtensilsCrossed } from "lucide-react";
 
 const Services = () => {
+  const servicesData = [
+    {
+      icon: Car,
+      title: "Serviço Autopark",
+      description:
+        "Seu veículo seguro e pronto para sua chegada. O Autopark oferece estacionamento com o melhor custo-benefício da região.",
+      note: "Condições especiais para hóspedes",
+    },
+    {
+      icon: BedDouble,
+      title: "Hospedagem",
+      description:
+        "Evite o estresse pré-voo. Desfrute de uma noite de sono tranquila em nossas acomodações e acorde revigorado.",
+      note: "Suites Confortáveis e Econômicas",
+    },
+    {
+      icon: Plane,
+      title: "Transfer Aeroporto (IGU)",
+      description:
+        "Leva e traz ao Aeroporto Internacional de Foz. Necessário informar dados do voo antecipadamente.",
+      note: "Gratuito em Reservas Diretas",
+    },
+    {
+      icon: Coffee,
+      title: "Café da Manhã",
+      description:
+        "Buffet completo e variado para sua degustação antes do embarque ou na sua chegada de viagem.",
+      note: "Disponível para hóspedes e passantes",
+    },
+    {
+      icon: UtensilsCrossed,
+      title: "Restaurante",
+      description:
+        "Serviço à la carte de Almoço e Jantar disponível diariamente. Mais comodidade para sua escala sem sair do hotel.",
+      note: "Cardápio variado À la carte",
+    },
+  ];
+
   return (
-    <section id="services" className="py-24 font-inter padding-container">
-      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <div className="mb-10 lg:mb-16 flex justify-center items-center flex-col gap-x-0 gap-y-6 lg:gap-y-0 lg:flex-row lg:justify-between max-md:max-w-lg max-md:mx-auto">
-          <div className="relative w-full text-center lg:text-left lg:w-2/4">
-            <h2 className="text-4xl font-bold text-gray-900 lg:mb-6 mx-auto max-w-max lg:max-w-md lg:mx-0">
-              Aproveite a comodidade e segurança do nosso serviço de Autopark
-            </h2>
-          </div>
-          <div className="relative w-full text-center lg:text-left lg:w-2/4">
-            <p className="text-lg font-normal text-gray-500 mb-5">
-              Garanta tranquilidade ao estacionar seu veículo com segurança e
-              facilidade, sem preocupações adicionais.
-            </p>
-          </div>
+    <section
+      id="services"
+      className="py-24 font-inter bg-green-50/50 relative overflow-hidden"
+    >
+      {/* Decoración de fondo */}
+      <div className="absolute top-0 right-0 w-96 h-96 bg-green-200/20 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2"></div>
+
+      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 relative z-10">
+        {/* ENCABEZADO DE SECCIÓN */}
+        <div className="text-center mb-16 max-w-3xl mx-auto">
+          <motion.h2
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="text-4xl font-black text-green-950 mb-6 tracking-tight"
+          >
+            Comodidade Completa
+          </motion.h2>
+          <motion.p
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.1 }}
+            className="text-lg text-slate-600 font-light"
+          >
+            Garanta tranquilidade ao estacionar seu veículo com segurança e
+            facilidade. Nossa estrutura oferece muito mais do que apenas uma
+            vaga.
+          </motion.p>
         </div>
 
-        {/* Seção de Serviços */}
-        <div className="mt-16">
-          <h3 className="text-3xl font-bold text-gray-900 text-center mb-8">
-            Nossos Serviços
-          </h3>
-          <div className="flex flex-wrap gap-6 justify-center">
-            {/* Serviço de Autopark */}
-            <div className="w-full sm:w-1/2 md:w-1/4 p-4 bg-gray-100 rounded-2xl shadow-lg">
-              <div className="text-center mb-4">
-                <AiOutlineSafety size={30} className="text-green-500" />
-              </div>
-              <h4 className="text-xl font-semibold text-gray-900 mb-2">
-                Serviço Autopark
-              </h4>
-              <p className="text-sm text-gray-600">
-                Seu veículo seguro e pronto para sua chegada. O Autopark oferece
-                estacionamento seguro e acessível, com o melhor custo-benefício
-                e total tranquilidade durante sua estadia.
-              </p>
-              <p className="text-xs text-gray-500 mt-2 italic">
-                Valor com hospedagem: R$25,00 | Valor sem hospedagem: R$35,00
-              </p>
-            </div>
+        {/* GRID DE SERVICIOS - Centrado */}
+        <div className="flex flex-wrap justify-center gap-8">
+          {servicesData.map((item, index) => (
+            <motion.div
+              key={index}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: index * 0.1 }}
+              whileHover={{ y: -5 }}
+              className="bg-white rounded-2xl shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col overflow-hidden border-t-4 border-green-600 group w-full md:w-[calc(50%-1rem)] lg:w-[calc(33.33%-1.5rem)]"
+            >
+              <div className="p-8 flex-grow">
+                <div className="mb-6 inline-flex items-center justify-center p-3 bg-green-50 rounded-xl group-hover:bg-green-100 transition-colors">
+                  <item.icon
+                    size={32}
+                    className="text-green-700"
+                    strokeWidth={1.5}
+                  />
+                </div>
 
-            {/* Outros serviços */}
-            <div className="w-full sm:w-1/2 md:w-1/4 p-4 bg-gray-100 rounded-2xl shadow-lg">
-              <div className="text-center mb-4">
-                <AiOutlineCreditCard size={30} className="text-green-500" />
-              </div>
-              <h4 className="text-xl font-semibold text-gray-900 mb-2">
-                Hospedagem
-              </h4>
-              <p className="text-sm text-gray-600">
-                Descanso garantido: evite as surpresas de última hora e o
-                estresse pré-voo. Desfrute de uma noite de sono tranquila em
-                nossas acomodações confortáveis e acorde revigorado, pronto para
-                sua viagem.
-              </p>
-              <p className="text-xs text-gray-500 mt-2 italic">
-                Tarifa disponível em nosso motor de reservas (Reservar)
-              </p>
-            </div>
+                <h4 className="text-xl font-bold text-green-950 mb-3">
+                  {item.title}
+                </h4>
 
-            {/* Outros serviços */}
-            <div className="w-full sm:w-1/2 md:w-1/4 p-4 bg-gray-100 rounded-2xl shadow-lg">
-              <div className="text-center mb-4">
-                <AiOutlineCustomerService
-                  size={30}
-                  className="text-green-500"
-                />
+                <p className="text-sm text-slate-500 font-light leading-relaxed">
+                  {item.description}
+                </p>
               </div>
-              <h4 className="text-xl font-semibold text-gray-900 mb-2">
-                Transporte
-              </h4>
-              <p className="text-sm text-gray-600">
-                Disponibilizamos serviços de leva e traz aeroporto sob
-                agendamento antecipado, apresentando todas as informações do
-                voo.
-              </p>
-              <p className="text-xs text-gray-500 mt-2 italic">
-                Gratuito na contratação de hospedagem e estacionamento |
-                Cobrança: Estacionamento sem hospedagem R$20,00
-              </p>
-            </div>
 
-            {/* Outros serviços */}
-            <div className="w-full sm:w-1/2 md:w-1/4 p-4 bg-gray-100 rounded-2xl shadow-lg">
-              <div className="text-center mb-4">
-                <AiOutlineClockCircle size={30} className="text-green-500" />
+              {/* Footer Informativo (Sin precios) */}
+              <div className="bg-slate-50 px-8 py-4 border-t border-slate-100 mt-auto">
+                <div className="flex items-center gap-2">
+                  <div className="h-2 w-2 rounded-full bg-green-500"></div>
+                  <span className="text-xs font-bold uppercase tracking-wide text-green-800">
+                    {item.note}
+                  </span>
+                </div>
               </div>
-              <h4 className="text-xl font-semibold text-gray-900 mb-2">
-                Café da Manhã
-              </h4>
-              <p className="text-sm text-gray-600">
-                Para você que não abre mão de uma boa refeição antes de seguir
-                sua viagem, disponibilizamos toda estrutura de café da manhã
-                para sua degustação antes do embarque ou na sua chegada.
-              </p>
-              <p className="text-xs text-gray-500 mt-2 italic">
-                Gratuito na contratação de hospedagem e estacionamento |
-                Cobrança: Estacionamento sem hospedagem R$62,00 por pessoa
-              </p>
-            </div>
-
-            {/* Outros serviços */}
-            <div className="w-full sm:w-1/2 md:w-1/4 p-4 bg-gray-100 rounded-2xl shadow-lg">
-              <div className="text-center mb-4">
-                <AiOutlineCustomerService
-                  size={30}
-                  className="text-green-500"
-                />
-              </div>
-              <h4 className="text-xl font-semibold text-gray-900 mb-2">
-                Café Despertar
-              </h4>
-              <p className="text-sm text-gray-600">
-                Pensado exclusivamente para nosso hóspede que deixou o veículo
-                em nosso pátio, hospedou-se e irá embarcar entre 01h e 05h da
-                manhã.
-              </p>
-              <p className="text-xs text-gray-500 mt-2 italic">
-                Obrigatório agendamento no momento do check-in | Custo: R$35,00
-              </p>
-            </div>
-
-            {/* Outros serviços */}
-            <div className="w-full sm:w-1/2 md:w-1/4 p-4 bg-gray-100 rounded-2xl shadow-lg">
-              <div className="text-center mb-4">
-                <AiOutlineCreditCard size={30} className="text-green-500" />
-              </div>
-              <h4 className="text-xl font-semibold text-gray-900 mb-2">
-                Almoço e Jantar
-              </h4>
-              <p className="text-sm text-gray-600">
-                Diariamente servimos almoço e jantar para sua comodidade,
-                oferecendo mais tempo e economia, seja no seu embarque, seja na
-                sua chegada.
-              </p>
-              <p className="text-xs text-gray-500 mt-2 italic">
-                Segunda a segunda, das 11:30 às 23:00 | Valores de acordo com o
-                nosso cardápio à la carte
-              </p>
-            </div>
-          </div>
+            </motion.div>
+          ))}
         </div>
       </div>
     </section>

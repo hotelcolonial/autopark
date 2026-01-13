@@ -10,6 +10,7 @@ import Services from "./Services";
 import Footer from "./Footer";
 import Localization from "./Localization";
 import Pacotes from "./Pacotes";
+import WhatsAppButton from "./WhatsappIcon";
 
 const HomePage = () => {
   return (
@@ -25,16 +26,8 @@ const HomePage = () => {
 
       <Localization />
       <Footer />
-      {/* Ícono de WhatsApp */}
-      <a
-        href="https://wa.me/558008191993?text=Olá%21%20Quero%20saber%20sobre%20o%20estacionamento"
-        target="_blank"
-        rel="noopener noreferrer"
-        className="fixed z-10 bottom-4 right-4 bg-green-500 hover:bg-green-600 text-white rounded-full shadow-lg p-2 flex items-center justify-center transition-all duration-300 reserve-whatsapp"
-        aria-label="Chat on WhatsApp"
-      >
-        <FaWhatsapp size={36} />
-      </a>
+
+      <WhatsAppButton />
     </div>
   );
 };

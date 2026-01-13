@@ -5,8 +5,14 @@ import { motion } from "framer-motion";
 import Link from "next/link";
 import Image from "next/image";
 import Navbar from "./Navbar";
-import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
-import { BadgePercent, InfoIcon, Plane, Star } from "lucide-react";
+import {
+  Plane,
+  ShieldCheck,
+  Car,
+  MapPin,
+  ExternalLink,
+  ChevronRight,
+} from "lucide-react";
 
 export default function Header() {
   const [isVisible, setIsVisible] = useState(false);
@@ -15,181 +21,163 @@ export default function Header() {
     setIsVisible(true);
   }, []);
 
+  // Animaciones suaves y lentas para el toque minimalista
+  const fadeUpVariant = {
+    hidden: { opacity: 0, y: 30 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: { duration: 0.8, ease: "easeOut" },
+    },
+  };
+
+  const containerVariant = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: { staggerChildren: 0.2 },
+    },
+  };
+
   return (
-    <div className="min-h-screen flex flex-col overflow-hidden bg-gradient-to-b from-green-100 via-green-50 to-white font-inter relative">
-      {/* Decorative elements */}
-      <div className="absolute top-20 left-10 md:left-20 w-20 h-20 md:w-32 md:h-32 bg-primary-green/10 rounded-full blur-3xl"></div>
-      <div className="absolute bottom-20 right-10 md:right-20 w-20 h-20 md:w-32 md:h-32 bg-blue-500/10 rounded-full blur-3xl"></div>
+    <div className="relative min-h-screen flex flex-col font-inter overflow-hidden bg-slate-900">
+      {/* 1. FONDO CON ESTÉTICA CINEMATOGRÁFICA Y MINIMALISTA */}
+      <div className="absolute inset-0 z-0">
+        <Image
+          src="/airport.jpg" // Asegúrate de tener una foto elegante aquí
+          layout="fill"
+          objectFit="cover"
+          alt="Hotel Colonial Iguaçu"
+          className="opacity-90"
+          priority
+        />
+        {/* Overlay degradado más sofisticado (Negro a transparente) para contraste */}
+        <div className="absolute inset-0 bg-gradient-to-r from-black/90 via-black/50 to-transparent z-10" />
+      </div>
 
-      {/* Promotional ribbon */}
-      <motion.div
-        initial={{ x: -100, opacity: 0 }}
-        animate={{ x: 0, opacity: 1 }}
-        transition={{ duration: 0.6, delay: 0.8 }}
-        className="absolute top-24 md:top-32 -left-2 z-20"
-      >
-        <div className="bg-red-500 text-white py-2 px-4 md:px-6 rounded-r-full shadow-lg flex items-center gap-2 transform -rotate-2">
-          <BadgePercent className="h-5 w-5" />
-          <span className="font-bold text-sm md:text-base">
-            PROMOÇÃO ESPECIAL
-          </span>
-        </div>
-      </motion.div>
+      <div className="relative z-20">
+        <Navbar />
+      </div>
 
-      <Navbar />
-
-      <div className="flex-grow flex items-center justify-center px-4 sm:px-6 lg:px-8 font-black relative z-10 pt-10 md:pt-0">
-        <div className="max-w-7xl w-full space-y-8 relative z-10">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: isVisible ? 1 : 0, y: isVisible ? 0 : 20 }}
-            transition={{ duration: 0.8 }}
-            className="text-center space-y-4"
-          >
-            <h2 className="text-sm md:text-base font-medium text-green-800 bg-green-100 inline-block px-4 py-1 rounded-full">
-              Vai viajar e embarcar saindo do aeroporto internacional de Foz do
-              Iguaçu?
-            </h2>
-
-            <h1 className="text-[3.5rem] md:text-[6rem] 2xl:text-[7rem] leading-[2.8rem] md:leading-[4.8rem] 2xl:leading-[5.5rem] text-green-950 drop-shadow-sm">
-              <motion.span
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: 0.1 }}
-                className="block"
-              >
-                ESTACIONE
-              </motion.span>
-              <motion.span
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: 0.3 }}
-                className="block text-primary-green relative"
-              >
-                HOSPEDE-SE
-                <span className="absolute -right-8 top-0 text-yellow-400">
-                  <Star className="h-8 w-8 md:h-12 md:w-12 fill-yellow-400" />
-                </span>
-              </motion.span>
-              <motion.span
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: 0.5 }}
-                className="block flex items-center justify-center gap-2"
-              >
-                VOE
-                <Plane className="h-10 w-10 md:h-16 md:w-16 inline-block transform rotate-45" />
-              </motion.span>
-            </h1>
+      <div className="relative z-20 flex-grow flex items-center px-6 md:px-16 lg:px-24">
+        <motion.div
+          variants={containerVariant}
+          initial="hidden"
+          animate="visible"
+          className="max-w-3xl w-full text-white pt-12 md:pt-0"
+        >
+          {/* BOTÓN AL SITE PRINCIPAL (Contexto) */}
+          <motion.div variants={fadeUpVariant} className="mb-6">
+            <Link
+              href="https://hotelcolonialfoz.com.br/"
+              target="_blank"
+              className="inline-flex items-center gap-2 text-sm font-light tracking-widest text-gray-300 hover:text-white transition-colors group"
+            >
+              <span className="uppercase border-b border-transparent group-hover:border-white transition-all pb-0.5">
+                Ir para o site do Hotel Colonial
+              </span>
+              <ExternalLink className="w-3 h-3 opacity-70 group-hover:opacity-100" />
+            </Link>
           </motion.div>
 
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: isVisible ? 1 : 0, y: isVisible ? 0 : 20 }}
-            transition={{ duration: 0.8, delay: 0.2 }}
-            className="text-center"
-          >
-            <p className="text-sm sm:text-base font-medium mb-6">
-              Serviço exclusivo do{" "}
-              <Link
-                href="https://hotelcolonialfoz.com.br/"
-                className="inline-block"
-              >
-                <motion.span
-                  whileHover={{ scale: 1.05 }}
-                  className="text-white px-3 py-2 rounded-md bg-primary-green font-light font-nautical hover:bg-green-900 transition-colors duration-300 text-lg sm:text-3xl hotel-link shadow-md"
-                >
-                  Hotel Colonial Iguaçu
-                </motion.span>
-              </Link>
-            </p>
-
-            <div className="flex flex-col sm:flex-row font-inter items-center justify-center gap-4">
+          {/* TÍTULO PRINCIPAL (Manteniendo la fuerza de la marca) */}
+          <motion.div variants={fadeUpVariant} className="mb-6 relative">
+            <h1 className="text-5xl md:text-7xl lg:text-8xl font-black leading-[0.9] text-white">
+              ESTACIONE
+            </h1>
+            <h1 className="text-5xl md:text-7xl lg:text-8xl font-black leading-[0.9] text-primary-green">
+              HOSPEDE-SE
+            </h1>
+            <div className="flex items-center gap-4">
+              <h1 className="text-5xl md:text-7xl lg:text-8xl font-black leading-[0.9] text-white">
+                E VOE
+              </h1>
               <motion.div
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
+                animate={{ x: [0, 5, 0], y: [0, -5, 0] }}
+                transition={{
+                  duration: 6,
+                  repeat: Infinity,
+                  ease: "easeInOut",
+                }}
               >
-                <Link
-                  href="https://wa.me/558008191993?text=Olá%21%20Quero%20saber%20sobre%20o%20estacionamento"
-                  target="_blank"
-                  className="inline-block bg-green-900 text-white font-medium text-sm sm:text-md px-8 py-3 rounded-full hover:bg-green-800 transition-colors duration-300 shadow-lg"
-                >
-                  Fale conosco pelo WhatsApp!
-                </Link>
-              </motion.div>
-
-              <motion.div
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-              >
-                <Link
-                  href="#package-info"
-                  className="inline-block bg-primary-green text-white font-medium text-sm sm:text-md px-8 py-3 rounded-full hover:bg-blue-600 transition-colors duration-300 shadow-lg"
-                >
-                  Ver Pacotes Promocionais
-                </Link>
+                <Plane className="h-8 w-8 md:h-14 md:w-14 text-white/80 transform -rotate-45 mt-2" />
               </motion.div>
             </div>
           </motion.div>
 
-          {/*       <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: isVisible ? 1 : 0, y: isVisible ? 0 : 20 }}
-            transition={{ duration: 0.8, delay: 0.4 }}
-            className="mt-8 mx-auto max-w-2xl"
+          {/* TEXTO DESCRIPTIVO (Minimalista: Fuente fina y legible) */}
+          <motion.p
+            variants={fadeUpVariant}
+            className="text-lg md:text-xl font-light text-gray-200 max-w-xl mb-10 leading-relaxed tracking-wide"
           >
-            <Alert
-              variant="default"
-              className="bg-amber-50 border-amber-200 shadow-md"
-            >
-              <InfoIcon className="h-5 w-5 text-amber-600" />
-              <AlertTitle className="text-amber-800 font-semibold text-base">
-                Oferta por tempo limitado!
-              </AlertTitle>
-              <AlertDescription className="text-amber-700">
-                Aproveite até 30% de desconto em pacotes de estacionamento +
-                hospedagem. Reserve agora e garanta sua vaga!
-              </AlertDescription>
-            </Alert>
-          </motion.div> */}
-        </div>
+            A tranquilidade que sua viagem merece. Deixe seu carro seguro no{" "}
+            <strong className="font-semibold text-white">
+              Hotel Colonial Iguaçu
+            </strong>{" "}
+            e aproveite nosso transfer exclusivo.
+          </motion.p>
 
-        <motion.div
-          initial={{ opacity: 0, scale: 0.8 }}
-          animate={{ opacity: isVisible ? 0.2 : 0, scale: isVisible ? 1 : 0.8 }}
-          transition={{ duration: 1, delay: 0.4 }}
-          className="absolute inset-0 flex justify-center items-center z-0 overflow-hidden"
-        >
-          <div className="w-full h-full max-w-6xl">
-            <Image
-              src="/airport.jpg"
-              layout="fill"
-              objectFit="cover"
-              alt="Aeroporto de Foz do Iguaçu"
-              className="rounded-3xl"
-            />
-          </div>
+          {/* BENEFICIOS (Limpios, sin cajas, solo iconos y texto) */}
+          <motion.div
+            variants={fadeUpVariant}
+            className="flex flex-col sm:flex-row gap-8 mb-12 border-l border-white/20 pl-6"
+          >
+            <div className="flex flex-col gap-1">
+              <div className="flex items-center gap-2 text-primary-green mb-1">
+                <MapPin className="w-5 h-5" />
+                <span className="text-xs font-bold uppercase tracking-widest text-gray-400">
+                  Proximidade
+                </span>
+              </div>
+              <span className="font-light text-white">800m do Aeroporto</span>
+            </div>
+
+            <div className="flex flex-col gap-1">
+              <div className="flex items-center gap-2 text-primary-green mb-1">
+                <Car className="w-5 h-5" />
+                <span className="text-xs font-bold uppercase tracking-widest text-gray-400">
+                  Logística
+                </span>
+              </div>
+              <span className="font-light text-white">
+                Transfer Grátis (24h)
+              </span>
+            </div>
+
+            <div className="flex flex-col gap-1">
+              <div className="flex items-center gap-2 text-primary-green mb-1">
+                <ShieldCheck className="w-5 h-5" />
+                <span className="text-xs font-bold uppercase tracking-widest text-gray-400">
+                  Segurança
+                </span>
+              </div>
+              <span className="font-light text-white">Monitoramento Total</span>
+            </div>
+          </motion.div>
+
+          {/* ACCIONES */}
+          <motion.div
+            variants={fadeUpVariant}
+            className="flex flex-col sm:flex-row items-start sm:items-center gap-6"
+          >
+            <Link
+              href="https://wa.me/558008191993?text=Olá%21+Vi+a+promoção+do+Estacionamento+no+site+e+quero+reservar+pelos+canais+diretos."
+              className="group relative px-8 py-4 bg-white text-green-900 rounded-full font-medium transition-transform hover:scale-105"
+            >
+              Falar no WhatsApp
+              <span className="absolute inset-0 rounded-full ring-2 ring-white/30 group-hover:ring-white/60 transition-all scale-105 group-hover:scale-110"></span>
+            </Link>
+
+            <Link
+              href="#pacotes"
+              className="flex items-center gap-2 text-white font-light hover:text-primary-green transition-colors"
+            >
+              Ver tabela de preços
+              <ChevronRight className="w-4 h-4" />
+            </Link>
+          </motion.div>
         </motion.div>
       </div>
-
-      {/* Floating badge */}
-      {/*   <motion.div
-        initial={{ opacity: 0, scale: 0 }}
-        animate={{ opacity: 1, scale: 1 }}
-        transition={{
-          type: "spring",
-          stiffness: 260,
-          damping: 20,
-          delay: 1.2,
-        }}
-        className="absolute top-40 right-10 md:right-20 z-20 hidden md:block"
-      >
-        <div className="bg-red-500 text-white h-24 w-24 rounded-full flex flex-col items-center justify-center shadow-lg transform rotate-12">
-          <span className="text-xs font-light">ATÉ</span>
-          <span className="text-2xl font-bold">30%</span>
-          <span className="text-xs font-light">OFF</span>
-        </div>
-      </motion.div> */}
     </div>
   );
 }

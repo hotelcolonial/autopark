@@ -1,105 +1,138 @@
 "use client";
 
-import { useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
-import { MapPin, Clock, Phone, ExternalLink } from "lucide-react";
+import { motion } from "framer-motion";
+import { MapPin, Navigation, Clock, Phone, ArrowUpRight } from "lucide-react";
+import Link from "next/link";
 
 const Localization = () => {
-  const [isExpanded, setIsExpanded] = useState(false);
-
-  const toggleExpand = () => setIsExpanded(!isExpanded);
+  // Enlaces directos para navegación GPS (UX vital para conductores)
+  const googleMapsUrl =
+    "https://www.google.com/maps/dir//Colonial+Auto+Park,+Foz+do+Igua%C3%A7u";
+  const wazeUrl = "https://waze.com/ul?q=Colonial+Auto+Park";
 
   return (
     <section
       id="location"
-      className="py-16 px-4 sm:px-6 font-inter lg:px-8 bg-gradient-to-b from-green-50 to-white"
+      className="py-20 px-6 font-inter bg-slate-50 relative overflow-hidden"
     >
-      <div className="max-w-6xl mx-auto">
-        <motion.h2
-          className="text-4xl font-bold text-green-950 mb-8 text-center"
-          initial={{ opacity: 0, y: -20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5 }}
-        >
-          Nossa Localização
-        </motion.h2>
-        <motion.div
-          className="relative bg-white shadow-2xl rounded-lg overflow-hidden"
-          initial={{ opacity: 0, scale: 0.95 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 0.5, delay: 0.2 }}
-        >
-          <div className="aspect-w-16 aspect-h-9">
-            <iframe
-              loading="lazy"
-              src="https://maps.google.com/maps?q=colonial%20autopark%20foz%20do%20igua%C3%A7u&amp;t=m&amp;z=13&amp;output=embed&amp;iwloc=near"
-              title="Colonial Autopark Foz do Iguaçu"
-              aria-label="Mapa interativo mostrando a localização do Colonial Autopark em Foz do Iguaçu"
-              className="w-full h-[20rem]"
-              style={{ border: 0 }}
-            ></iframe>
-          </div>
+      {/* Fondo decorativo sutil */}
+      <div className="absolute bottom-0 left-0 w-full h-1/2 bg-green-50/50 skew-y-3 transform origin-bottom-left -z-0" />
 
+      <div className="max-w-7xl mx-auto relative z-10">
+        {/* Encabezado */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          className="text-center mb-16"
+        >
+          <h2 className="text-3xl md:text-5xl font-black text-green-950 mb-4 tracking-tight">
+            Localização Privilegiada
+          </h2>
+          <p className="text-lg text-slate-500 font-light max-w-2xl mx-auto">
+            Estamos estrategicamente posicionados na Rodovia das Cataratas, o
+            corredor turístico de Foz, e a poucos segundos do seu portão de
+            embarque.
+          </p>
+        </motion.div>
+
+        <div className="grid lg:grid-cols-5 gap-8 lg:gap-12 items-start">
+          {/* 1. INFO CARD (Izquierda) */}
           <motion.div
-            className={`absolute flex left-0 bottom-0 w-full sm:w-2/3 md:w-1/2 lg:w-2/5 bg-green-950 text-white p-6 rounded-tr-lg transition-all duration-300 ease-in-out ${
-              isExpanded ? "h-full" : "h-auto"
-            }`}
-            initial={{ y: "100%" }}
-            animate={{ y: 0 }}
-            transition={{ duration: 0.5, delay: 0.4 }}
+            initial={{ opacity: 0, x: -20 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            className="lg:col-span-2 space-y-8"
           >
-            <div className="space-y-4 flex justify-center flex-col">
-              <div className="flex items-center justify-between">
-                <h3 className="text-3xl font-bold">Colonial Autopark</h3>
-                <div className="text-yellow-400 text-2xl">★★★</div>
+            {/* Destacado de Proximidad */}
+            <div className="bg-green-900 text-white p-8 rounded-3xl shadow-xl relative overflow-hidden">
+              <div className="absolute top-0 right-0 w-32 h-32 bg-green-800 rounded-full blur-2xl -translate-y-1/2 translate-x-1/2"></div>
+
+              <div className="relative z-10">
+                <div className="flex items-center gap-3 mb-4 opacity-80">
+                  <Navigation className="w-5 h-5 text-yellow-400" />
+                  <span className="text-sm font-bold uppercase tracking-widest">
+                    Distância do Aeroporto
+                  </span>
+                </div>
+                <div className="flex items-baseline gap-2 mb-2">
+                  <span className="text-5xl font-black text-white">800</span>
+                  <span className="text-xl font-light text-green-200">
+                    metros
+                  </span>
+                </div>
+                <p className="text-sm font-light text-green-100 border-t border-white/10 pt-4 mt-2">
+                  Menos de 3 minutos de transfer até o terminal de embarque.
+                </p>
               </div>
-              <AnimatePresence>
-                {isExpanded && (
-                  <motion.div
-                    initial={{ opacity: 0, height: 0 }}
-                    animate={{ opacity: 1, height: "auto" }}
-                    exit={{ opacity: 0, height: 0 }}
-                    transition={{ duration: 0.3 }}
-                  >
-                    <div className="space-y-3 text-sm">
-                      <p className="flex items-center">
-                        <MapPin className="mr-2 h-5 w-5" />
-                        Rodovia das Cataratas Km 20, 11237
-                        <br />
-                        Parque Nacional do Iguaçu, Foz do Iguaçu
-                      </p>
-                      <p className="flex items-center">
-                        <Clock className="mr-2 h-5 w-5" />
-                        Aberto 24 horas
-                      </p>
-                      <p className="flex items-center">
-                        <Phone className="mr-2 h-5 w-5" />
-                        +55 45 3527-7711
-                      </p>
-                    </div>
-                  </motion.div>
-                )}
-              </AnimatePresence>
-              <div className="flex flex-col sm:flex-row gap-4 my-4">
-                <a
-                  href="https://www.google.com/maps/place/Colonial+Auto+Park/@-25.6073154,-54.4918961,17z/data=!3m1!4b1!4m6!3m5!1s0x94f69574b06b3e1d:0x8a996b09d354009a!8m2!3d-25.6073154!4d-54.4918961!16s%2Fg%2F11q8jjyr8m?entry=ttu&g_ep=EgoyMDI0MTIwOC4wIKXMDSoASAFQAw%3D%3D"
+            </div>
+
+            {/* Datos de Contacto y Dirección */}
+            <div className="bg-white p-8 rounded-3xl shadow-sm border border-slate-100 space-y-6">
+              <div>
+                <h3 className="text-lg font-bold text-green-950 mb-4 flex items-center gap-2">
+                  <MapPin className="w-5 h-5 text-green-600" />
+                  Endereço
+                </h3>
+                <p className="text-slate-600 font-light leading-relaxed">
+                  Rodovia das Cataratas, Km 20 - Nº 11237
+                  <br />
+                  Parque Nacional do Iguaçu
+                  <br />
+                  Foz do Iguaçu - PR
+                </p>
+              </div>
+
+              <div>
+                <h3 className="text-lg font-bold text-green-950 mb-4 flex items-center gap-2">
+                  <Clock className="w-5 h-5 text-green-600" />
+                  Funcionamento
+                </h3>
+                <p className="text-slate-600 font-light">
+                  Aberto 24 horas / 7 dias por semana
+                  <br />
+                  <span className="text-xs text-slate-400">
+                    Recepção e Segurança constante
+                  </span>
+                </p>
+              </div>
+
+              {/* Botones de Navegación (Waze/Maps) */}
+              <div className="grid grid-cols-2 gap-3 pt-4 border-t border-slate-100">
+                <Link
+                  href={googleMapsUrl}
                   target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center justify-center px-4 py-2 bg-white text-green-950 rounded-full font-semibold text-sm hover:bg-green-100 transition-colors duration-300"
+                  className="flex items-center justify-center gap-2 py-3 px-4 rounded-xl bg-slate-50 text-slate-700 font-medium text-sm hover:bg-green-50 hover:text-green-800 transition-colors group"
                 >
-                  Ver no Google Maps
-                  <ExternalLink className="ml-2 h-4 w-4" />
-                </a>
-                <button
-                  onClick={toggleExpand}
-                  className="inline-flex items-center justify-center px-4 py-2 bg-green-700 text-white rounded-full font-semibold text-sm hover:bg-green-600 transition-colors duration-300"
-                >
-                  {isExpanded ? "Menos detalhes" : "Mais detalhes"}
-                </button>
+                  Google Maps
+                  <ArrowUpRight className="w-4 h-4 opacity-50 group-hover:opacity-100 transition-opacity" />
+                </Link>
               </div>
             </div>
           </motion.div>
-        </motion.div>
+
+          {/* 2. MAPA (Derecha) */}
+          <motion.div
+            initial={{ opacity: 0, scale: 0.95 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            viewport={{ once: true }}
+            className="lg:col-span-3 h-full min-h-[400px] lg:min-h-[600px] relative rounded-3xl overflow-hidden shadow-2xl border-4 border-white"
+          >
+            <iframe
+              loading="lazy"
+              src="https://maps.google.com/maps?q=colonial%20autopark%20foz%20do%20igua%C3%A7u&amp;t=m&amp;z=15&amp;output=embed&amp;iwloc=near"
+              title="Colonial Autopark Foz do Iguaçu"
+              className="absolute inset-0 w-full h-full"
+              style={{ border: 0, filter: "grayscale(0%)" }} // Puedes poner grayscale(100%) si quieres un look más sobrio
+              allowFullScreen
+            ></iframe>
+
+            {/* Badge flotante sobre el mapa */}
+            <div className="absolute top-4 right-4 bg-white/90 backdrop-blur-md px-4 py-2 rounded-lg shadow-lg text-xs font-bold text-green-900 border border-white/50">
+              📍 Colonial Auto Park
+            </div>
+          </motion.div>
+        </div>
       </div>
     </section>
   );
