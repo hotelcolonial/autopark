@@ -55,7 +55,7 @@ export default function Header() {
         <div className="absolute inset-0 bg-gradient-to-r from-black/90 via-black/50 to-transparent z-10" />
       </div>
 
-      <div className="relative z-20">
+      <div className="relative z-50">
         <Navbar />
       </div>
 
@@ -169,8 +169,8 @@ export default function Header() {
             </Link>
 
             <Link
-              href="#pacotes"
-              className="flex items-center gap-2 text-white font-light hover:text-primary-green transition-colors"
+              href="#package-info"
+              className="flex items-center mb-4 sm:mb-0 gap-2 text-white font-light hover:text-primary-green transition-colors"
             >
               Ver tabela de preços
               <ChevronRight className="w-4 h-4" />

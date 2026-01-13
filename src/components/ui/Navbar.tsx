@@ -6,7 +6,6 @@ import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X, Phone, ExternalLink } from "lucide-react";
 
-// Interfaces para TypeScript
 interface NavLinkProps {
   href: string;
   text: string;
@@ -25,17 +24,15 @@ const Navbar = () => {
   const toggleMenu = () => setIsMenuOpen(!isMenuOpen);
 
   return (
-    // CAMBIO IMPORTANTE:
-    // Usamos 'relative' en lugar de 'absolute'.
-    // Esto crea un bloque sólido al inicio de la página. Nada puede taparlo.
-    <nav className="relative w-full z-50 bg-white shadow-md font-inter">
+    // CAMBIO CRÍTICO: z-[9999]
+    // Usamos 'relative' para que se quede arriba (no persiga el scroll).
+    // Usamos 'z-[9999]' para forzar que esté ENCIMA de absolutamente todo (Hero, WhatsApp, Modales).
+    <nav className="relative top-0 w-full z-[9999] bg-white shadow-md font-inter">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-24">
           {/* --- LOGO AREA --- */}
-          {/* z-index extra para asegurar que el logo esté clickeable */}
-          <div className="flex-shrink-0 flex items-center gap-3 relative z-50">
+          <div className="flex-shrink-0 flex items-center gap-3 relative z-[9999]">
             <Link href="/" className="group cursor-pointer block">
-              {/* Contenedor Verde para el logo blanco */}
               <div className="bg-green-900 p-2 rounded-lg shadow-sm border border-green-800 transition-transform transform group-hover:scale-105">
                 <Image
                   alt="Colonial AutoPark Logo"
@@ -43,7 +40,7 @@ const Navbar = () => {
                   width={60}
                   height={60}
                   className="object-contain"
-                  priority // Carga prioritaria para el logo
+                  priority
                 />
               </div>
             </Link>
@@ -60,14 +57,14 @@ const Navbar = () => {
           </div>
 
           {/* --- DESKTOP MENU --- */}
-          <div className="hidden md:flex items-center space-x-8">
+          <div className="hidden md:flex items-center space-x-8 relative z-[9999]">
             <NavLink href="/" text="Home" />
             <NavLink href="#package-info" text="Pacotes" />
             <NavLink href="#location" text="Localização" />
 
             <Link
               href="https://hotelcolonialfoz.com.br/"
-              className="flex items-center gap-1 text-sm font-medium text-gray-600 hover:text-green-800 transition-colors cursor-pointer z-50"
+              className="flex items-center gap-1 text-sm font-medium text-gray-600 hover:text-green-800 transition-colors cursor-pointer"
               target="_blank"
             >
               Hotel Colonial <ExternalLink className="w-3 h-3" />
@@ -76,8 +73,7 @@ const Navbar = () => {
             <Link
               href="https://wa.me/558008191993?text=Olá%21+Vi+a+promoção+do+Estacionamento+no+site+e+quero+reservar+pelos+canais+diretos."
               target="_blank"
-              // 'relative z-50' asegura que el botón esté en la capa superior de interacción
-              className="relative z-50 flex items-center gap-2 px-6 py-3 rounded-full text-sm font-bold bg-green-900 text-white hover:bg-green-800 shadow-lg hover:shadow-green-900/20 transition-all duration-300 cursor-pointer active:scale-95"
+              className="flex items-center gap-2 px-6 py-3 rounded-full text-sm font-bold bg-green-900 text-white hover:bg-green-800 shadow-lg hover:shadow-green-900/20 transition-all duration-300 cursor-pointer active:scale-95"
             >
               <Phone className="w-4 h-4" />
               Reservar Agora
@@ -108,7 +104,8 @@ const Navbar = () => {
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: "auto" }}
             exit={{ opacity: 0, height: 0 }}
-            className="md:hidden bg-white border-t border-gray-100 overflow-hidden shadow-xl absolute w-full left-0 top-full z-40"
+            // z-[9998] para asegurar que el despliegue esté justo debajo de la barra pero encima del resto de la web
+            className="md:hidden bg-white border-t border-gray-100 shadow-2xl absolute w-full left-0 top-full z-[9998] overflow-hidden"
           >
             <div className="px-4 pt-4 pb-6 space-y-2 flex flex-col items-center text-center">
               <div className="mb-4 text-center">
@@ -135,7 +132,7 @@ const Navbar = () => {
                 external={true}
               />
 
-              <div className="pt-4 w-full">
+              <div className="pt-4 w-full pb-4">
                 <Link
                   href="https://wa.me/558008191993"
                   target="_blank"
@@ -158,7 +155,7 @@ const Navbar = () => {
 const NavLink = ({ href, text }: NavLinkProps) => (
   <Link
     href={href}
-    className="relative z-50 text-sm font-medium text-gray-600 hover:text-green-800 transition-colors group cursor-pointer py-2"
+    className="relative text-sm font-medium text-gray-600 hover:text-green-800 transition-colors group cursor-pointer py-2"
   >
     {text}
     <span className="absolute bottom-1 left-0 w-0 h-0.5 bg-green-600 transition-all group-hover:w-full duration-300"></span>

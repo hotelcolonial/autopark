@@ -81,7 +81,7 @@ const PackageInfo = () => {
         </div>
 
         {/* 2. ÁREA DE BENEFICIOS EXCLUSIVOS (Highlight Direct Booking) */}
-        <div className="mb-16">
+        <div className="mb-16 mx-auto">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -143,7 +143,7 @@ const PackageInfo = () => {
               </div>
 
               {/* CTA dentro del banner */}
-              <div className="flex flex-col items-center justify-center bg-white/5 backdrop-blur-sm rounded-xl p-8 border border-white/10 text-center">
+              <div className="flex flex-col items-center justify-center bg-white/5 backdrop-blur-sm rounded-xl p-5 sm:p-8 border border-white/10 text-center">
                 <p className="text-lg font-medium mb-6">
                   Garanta o melhor preço e todos os bônus agora.
                 </p>
