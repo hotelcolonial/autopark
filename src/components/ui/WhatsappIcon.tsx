@@ -5,7 +5,7 @@ import { motion } from "framer-motion";
 
 const WhatsAppButton = () => {
   return (
-    <div className="fixed bottom-6 right-6 z-50 flex items-center gap-3">
+    <div className="fixed reserve-whatsapp bottom-6 right-6 z-50 flex items-center gap-3">
       {/* Etiqueta de texto (Solo visible en Hover/Desktop) */}
       <div className="hidden md:block opacity-0 translate-x-4 transition-all duration-300 group-hover:opacity-100 group-hover:translate-x-0 bg-white text-green-900 px-3 py-1.5 rounded-lg shadow-md text-sm font-bold border border-green-100 mr-2 pointer-events-none">
         Falar no WhatsApp
