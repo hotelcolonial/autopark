@@ -24,6 +24,8 @@ const PackageInfo = () => {
       price: "23,00",
       features: ["Vaga segura monitorada", "Acesso às áreas comuns na diária"],
       recommended: false,
+      whatsappMessage:
+        "Olá! Vim pelo site e tenho interesse na tarifa de Curta Duração, até 7 dias, a partir de R$ 23,00 por dia.",
     },
     {
       title: "Média Duração",
@@ -34,6 +36,8 @@ const PackageInfo = () => {
         "Melhor custo-benefício para férias",
       ],
       recommended: true,
+      whatsappMessage:
+        "Olá! Vim pelo site e tenho interesse na tarifa de Média Duração, até 15 dias, a partir de R$ 20,00 por dia.",
     },
     {
       title: "Longa Duração",
@@ -41,6 +45,8 @@ const PackageInfo = () => {
       price: "18,00",
       features: ["Vaga segura monitorada", "Tarifa econômica progressiva"],
       recommended: false,
+      whatsappMessage:
+        "Olá! Vim pelo site e tenho interesse na tarifa de Longa Duração, acima de 15 dias, a partir de R$ 18,00 por dia.",
     },
   ];
 
@@ -59,6 +65,8 @@ const PackageInfo = () => {
         "Estacionamento com tarifa conforme período",
       ],
       unavailable: [],
+      whatsappMessage:
+        "Olá! Vim pelo site e tenho interesse no pacote Retorno 50. Quero saber mais sobre a reserva com ida e volta, 50% de desconto na segunda diária, transfer 24h e jantar de boas-vindas.",
     },
     {
       title: "Estacionamento + 01 Diária",
@@ -74,6 +82,8 @@ const PackageInfo = () => {
         "Estacionamento com tarifa conforme período",
       ],
       unavailable: [],
+      whatsappMessage:
+        "Olá! Vim pelo site e tenho interesse no pacote Estacionamento + 01 Diária. Quero saber mais sobre hospedagem com estacionamento, transfer in/out 24h e jantar de boas-vindas.",
     },
     {
       title: "Somente Estacionamento",
@@ -84,11 +94,14 @@ const PackageInfo = () => {
         "Para quem precisa somente deixar o veículo em uma vaga segura durante a viagem.",
       benefits: ["Vaga segura monitorada", "Tarifa conforme período escolhido"],
       unavailable: ["Não inclui transfer in/out", "Não inclui jantar"],
+      whatsappMessage:
+        "Olá! Vim pelo site e tenho interesse no pacote Somente Estacionamento. Quero saber mais sobre valores e disponibilidade para deixar meu carro estacionado.",
     },
   ];
 
-  const whatsappUrl =
-    "https://wa.me/558008191993?text=Olá%21%20Vi%20a%20promoção%20do%20Estacionamento%20no%20site%20e%20quero%20reservar%20pelos%20canais%20diretos.";
+  const getWhatsappUrl = (message: string) => {
+    return `https://wa.me/558008191993?text=${encodeURIComponent(message)}`;
+  };
 
   return (
     <section
@@ -119,6 +132,7 @@ const PackageInfo = () => {
             className="inline-flex items-center gap-3 bg-green-50 border border-green-200 rounded-full px-6 py-3 shadow-sm"
           >
             <Info className="w-5 h-5 text-green-700 flex-shrink-0" />
+
             <span className="text-sm md:text-base font-medium text-green-950">
               Benefícios especiais válidos para{" "}
               <strong className="font-bold">reservas diretas</strong> via site
@@ -212,7 +226,9 @@ const PackageInfo = () => {
               </ul>
 
               <Button
-                onClick={() => window.open(whatsappUrl, "_blank")}
+                onClick={() =>
+                  window.open(getWhatsappUrl(option.whatsappMessage), "_blank")
+                }
                 className={`w-full py-6 rounded-full font-bold transition-transform hover:scale-105 ${
                   option.highlight
                     ? "bg-yellow-500 hover:bg-yellow-600 text-green-950"
@@ -309,7 +325,14 @@ const PackageInfo = () => {
                 </p>
 
                 <Button
-                  onClick={() => window.open(whatsappUrl, "_blank")}
+                  onClick={() =>
+                    window.open(
+                      getWhatsappUrl(
+                        "Olá! Vim pelo site e quero ajuda para escolher o melhor pacote de estacionamento para minha viagem."
+                      ),
+                      "_blank"
+                    )
+                  }
                   className="w-full bg-yellow-500 hover:bg-yellow-600 text-green-950 font-bold py-6 text-lg rounded-full shadow-lg transition-transform hover:scale-105"
                 >
                   RESERVAR PELO WHATSAPP
@@ -331,7 +354,7 @@ const PackageInfo = () => {
 
           <p className="text-slate-500 font-light max-w-2xl mx-auto">
             Os valores abaixo permanecem conforme o período de permanência do
-            veículo
+            veículo.
           </p>
         </div>
 
@@ -397,7 +420,9 @@ const PackageInfo = () => {
                     ? "bg-green-900 hover:bg-green-800 text-white"
                     : "border-slate-200 text-slate-600 hover:border-green-900 hover:text-green-900"
                 }`}
-                onClick={() => window.open(whatsappUrl, "_blank")}
+                onClick={() =>
+                  window.open(getWhatsappUrl(pkg.whatsappMessage), "_blank")
+                }
               >
                 Cotar agora <ArrowRight className="w-4 h-4 ml-2" />
               </Button>
