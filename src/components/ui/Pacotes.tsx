@@ -331,7 +331,7 @@ const PackageInfo = () => {
 
           <p className="text-slate-500 font-light max-w-2xl mx-auto">
             Os valores abaixo permanecem conforme o período de permanência do
-            veículo.
+            veículo
           </p>
         </div>
 
