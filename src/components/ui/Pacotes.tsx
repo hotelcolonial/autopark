@@ -105,11 +105,10 @@ const PackageInfo = () => {
 
   return (
     <section
-      id="package-info"
       className="py-20 px-6 font-inter bg-slate-50 text-slate-800"
     >
       <div className="max-w-6xl mx-auto">
-        <div className="text-center mb-16 space-y-6">
+        <div className="text-center mb-16 space-y-6"  id="package-info">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -347,7 +346,7 @@ const PackageInfo = () => {
           </motion.div>
         </div>
 
-        <div className="text-center mb-10">
+        <div id="prices" className="text-center mb-10">
           <h3 className="text-2xl md:text-4xl font-black text-green-950 mb-3">
             TARIFAS DO ESTACIONAMENTO
           </h3>
