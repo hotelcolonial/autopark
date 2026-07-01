@@ -10,7 +10,6 @@ import {
   ArrowRight,
   Plane,
   Bed,
-  Percent,
   ShieldCheck,
   X,
 } from "lucide-react";
@@ -52,27 +51,10 @@ const PackageInfo = () => {
 
   const bookingOptions = [
     {
-      title: "Retorno 50",
-      subtitle: "Ida e volta com hospedagem",
-      icon: <Percent className="w-6 h-6" />,
-      highlight: true,
-      description:
-        "Reserve a ida e a volta conosco e ganhe 50% de desconto na segunda diária.",
-      benefits: [
-        "50% de desconto na segunda diária",
-        "Transfer in/out ao aeroporto 24h",
-        "Jantar de boas-vindas",
-        "Estacionamento com tarifa conforme período",
-      ],
-      unavailable: [],
-      whatsappMessage:
-        "Olá! Vim pelo site e tenho interesse no pacote Retorno 50. Quero saber mais sobre a reserva com ida e volta, 50% de desconto na segunda diária, transfer 24h e jantar de boas-vindas.",
-    },
-    {
       title: "Estacionamento + 01 Diária",
       subtitle: "Prático para embarcar tranquilo",
       icon: <Bed className="w-6 h-6" />,
-      highlight: false,
+      highlight: true,
       description:
         "Ideal para quem quer descansar antes ou depois da viagem com benefícios inclusos.",
       benefits: [
@@ -140,7 +122,7 @@ const PackageInfo = () => {
           </motion.div>
         </div>
 
-        <div className="mb-16 grid grid-cols-1 lg:grid-cols-3 gap-6">
+        <div className="mb-16 grid grid-cols-1 md:grid-cols-2 gap-6 max-w-3xl mx-auto">
           {bookingOptions.map((option, index) => (
             <motion.div
               key={option.title}
@@ -277,8 +259,8 @@ const PackageInfo = () => {
                         Transfer in/out ao aeroporto 24h
                       </h4>
                       <p className="text-sm text-green-200 font-light mt-1">
-                        Incluso nos pacotes com hospedagem: Retorno 50 e
-                        Estacionamento + 01 Diária.
+                        Incluso nos pacotes com hospedagem: Estacionamento + 01
+                        Diária.
                       </p>
                     </div>
                   </div>
@@ -432,9 +414,9 @@ const PackageInfo = () => {
         <div className="mt-12 text-center border-t border-slate-200 pt-8">
           <p className="text-sm text-slate-500 font-light leading-relaxed">
             * Valores sujeitos a alteração sem aviso prévio. Benefícios como
-            transfer in/out 24h, jantar de boas-vindas e desconto na segunda
-            diária são válidos conforme o pacote contratado e exclusivamente
-            para reservas diretas pelo site oficial ou WhatsApp.
+            transfer in/out 24h e jantar de boas-vindas são válidos conforme o
+            pacote contratado e exclusivamente para reservas diretas pelo site
+            oficial ou WhatsApp.
           </p>
         </div>
       </div>
